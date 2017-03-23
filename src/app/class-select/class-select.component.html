@@ -1,0 +1,7 @@
+<md-card class="card" *ngIf="classes">
+  <select class="app-list" [(ngModel)]="selectedId" (ngModelChange)="onChange($event)">
+      <option *ngFor="let item of classes"
+        [selected]="item.ClassId===selectedId"
+        [value]="item.ClassId" >{{item.Name}}</option>
+    </select>
+</md-card>

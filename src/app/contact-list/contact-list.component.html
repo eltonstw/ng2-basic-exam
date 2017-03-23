@@ -1,0 +1,46 @@
+<app-class-select (itemChanged)="bind($event)" ></app-class-select>
+
+<md-card class="card" *ngIf="!adding && contacts">
+    <button md-raised-button color="primary" (click)="addContact()">Add</button>
+    <table class="gradienttable">
+      <tr>
+        <th>
+          <p>Name</p>
+        </th>
+        <th>
+          <p>Sex</p>
+        </th>
+        <th>
+          <p>Mail</p>
+        </th>
+        <th>
+          <p>Phone</p>
+        </th>
+        <th>
+          <p>Address</p>
+        </th>
+      </tr>
+      <tr *ngFor="let item of contacts">
+        <td>
+          <p (click)="onItemClicked(item.ContactId)">{{item.Name}}</p>
+
+        </td>
+        <td>
+          <p>{{item.Sex==0?'boy':'girl'}}</p>
+        </td>
+        <td>
+          <p>{{item.Email}}</p>
+        </td>
+        <td>
+          <p>{{item.Phone}}</p>
+        </td>
+        <td>
+          <p>{{item.Address}}</p>
+        </td>
+      </tr>
+    </table>
+</md-card>
+
+<app-contact-detail *ngIf="adding"
+   (canceled)="adding=false" (saved)="onAdded($event)"
+  [selectedClassId]="selectedClassId"></app-contact-detail>

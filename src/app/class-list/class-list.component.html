@@ -1,0 +1,18 @@
+<div *ngIf="!adding">
+  <md-card class="card">
+    <button md-raised-button (click)="onCancel()">Cancel</button>
+    <button md-raised-button color="primary" (click)="addClass()">Add</button>
+  </md-card>
+
+  <md-card class="card">
+    <md-list class="app-list">
+      <md-list-item *ngFor="let item of classes" (click)="onSelect(item.ClassId)">
+        <h3 md-line> {{item.Name}} </h3>
+      </md-list-item>
+    </md-list>
+  </md-card>
+</div>
+
+<div *ngIf="adding">
+  <app-class-detail (canceled)="adding=false" (saved)="onAdded($event)"></app-class-detail>
+</div>

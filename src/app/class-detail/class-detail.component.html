@@ -1,0 +1,9 @@
+<div *ngIf="class">
+  <md-card class="app-input-section card">
+    <md-input [(ngModel)]="class.Name" placeholder="Class Name" maxlength="50"></md-input>
+    <button md-raised-button color="primary" (click)="save()" *ngIf="class.Name">Save</button>
+    <button md-raised-button color="accent" (click)="remove()" *ngIf="navigated">Remove</button>
+    <button md-raised-button (click)="cancel()">Cancel</button>
+    <div *ngIf="error" class="error">{{error}}</div>
+  </md-card>
+</div>
